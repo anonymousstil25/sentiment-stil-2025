@@ -14,32 +14,25 @@ def extract_sentiment(text):
     if not text:
         return None
 
-    # Só tenta se encontrar a palavra 'sentiment' (case-insensitive)
     if 'sentiment' not in text.lower():
         return None
 
-    # Regex para pegar blocos de código Python ou JSON entre chaves {}
-    # Pode ser um bloco ```python ... ``` ou simplesmente {...}
     pattern = r'```python\s*(\{.*?\})\s*```|(\{.*?\})'
     matches = re.findall(pattern, text, flags=re.DOTALL)
 
     extracted = []
     for py_block, json_block in matches:
-        candidate = py_block or json_block  # Pega o grupo que não está vazio
+        candidate = py_block or json_block 
         candidate = candidate.strip()
 
-        # Tentar carregar com json
         try:
             data = json.loads(candidate)
         except json.JSONDecodeError:
-            # Caso falhe, tentar usar ast.literal_eval (para dicionários Python)
             try:
                 data = ast.literal_eval(candidate)
             except (ValueError, SyntaxError):
-                # Falhou em tudo, ignora
                 continue
 
-        # Se tiver a chave 'sentiment', adiciona o valor
         if isinstance(data, dict) and 'sentiment' in data:
             extracted.append(data['sentiment'])
 
