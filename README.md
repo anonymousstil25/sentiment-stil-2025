@@ -1,7 +1,7 @@
 
-# Project Name
+# Sentiment Analysis in Portuguese Using Open-Source LLMs and Prompt Engineering
 
-Project for submission to STIL 2025 — [project title or summarized theme, if you wish to anonymize it, you can use a generic title]
+Project for submission to STIL 2025 — Sentiment Analysis in Portuguese with Open-Source LLMs and Prompt Engineering
 
 ## Important Notice - Anonymous Submission
 
@@ -25,11 +25,13 @@ Consider the following classifications:
 * Negative: Refers to an unfavorable or pessimistic attitude (e.g., anger, frustration, sadness).
 * Neutral: Indicates that the text does not express a clear or strong sentiment (e.g., factual information).
 
-When the user provides a text, analyze and identify the most likely classification for the given text. Respond ONLY with a Python dictionary where the key is "sentiment" and the value is the appropriate sentiment from the list above. Do not add any text in your response, under any circumstances. Make sure the suggested sentiment is STRICTLY one from the provided list and indicate only ONE sentiment. The classification must EXACTLY MATCH one of the options listed above, without variations in capitalization, spacing, or wording. Do not add or remove spaces, do not change uppercase or lowercase letters, and do not alter the names in any way.
+When the user provides a text, analyze and identify the most likely classification for the given text. Respond ONLY with a Python dictionary where the key is "sentiment" and the value is the appropriate sentiment from the list above. 
+Do not add any text in your response, under any circumstances. Make sure the suggested sentiment is STRICTLY one from the provided list and indicate only ONE sentiment. 
+The classification must EXACTLY MATCH one of the options listed above, without variations in capitalization, spacing, or wording. Do not add or remove spaces, do not change uppercase or lowercase letters, and do not alter the names in any way.
 
-Thus, the user's text is:
-text: *text user*
-sentiment:
+Now, analyze the following user text and classify the sentiment:
+User text: *user text*
+Response:
 ```
 ### Few-Shot Prompt
 ```
@@ -45,20 +47,20 @@ When the user provides a text, analyze and identify the most likely classificati
 Here are some examples of user texts:
 
 User text: "O produto chegou no prazo, mas a embalagem estava um pouco danificada."
-{"sentiment": "Neutral"}
+Response: {"sentiment": "Neutral"}
 
 User text: "Estou extremamente feliz com o atendimento, todos foram muito atenciosos!"
-{"sentiment": "Positive"}
+Response: {"sentiment": "Positive"}
 
 User text: "O atendimento foi péssimo, fiquei esperando por horas e ninguém me ajudou."
-{"sentiment": "Negative"}
+Response: {"sentiment": "Negative"}
 
-User text: "O produto é bom, mas achei o preço um pouco alto para a qualidade."
-{"sentiment": "Neutral"}
+User text: "Péssimo!"
+Response: {"sentiment": "Negative"}
 
-Thus, the user's text is:
-text: *text user*
-sentiment:
+Now, analyze the following user text and classify the sentiment:
+User text: *user text*
+Response:
 ```
 ### Chain-of-Thought (CoT) Prompt
 ```
@@ -70,11 +72,14 @@ Consider the following classifications:
 * Negative: Refers to an unfavorable or pessimistic attitude (e.g., anger, frustration, sadness).
 * Neutral: Indicates that the text does not express a clear or strong sentiment (e.g., factual information).
 
-Before the final response, explain step-by-step how you interpreted the user's provided text. After explaining, based on your reasoning, give your final response in the expected format. Respond with only a Python dictionary where the key is "sentiment" and the value is the appropriate classification from the list above. There is no need to generate any additional text in your response, under any circumstance. **Make sure the suggested sentiment is STRICTLY one from the provided list and indicate only ONE sentiment. The classification must EXACTLY MATCH one of the options listed above, without variations in capitalization, spacing, or wording. Do not add or remove spaces, do not change uppercase or lowercase letters, and do not alter the names in any way.**
+Before the final response, explain step-by-step how you interpreted the user's provided text. After explaining, based on your reasoning, give your final response in the expected format. 
+Respond with only a Python dictionary where the key is "sentiment" and the value is the appropriate classification from the list above. There is no need to generate any additional text in your response, under any circumstance. 
+*Make sure the suggested sentiment is STRICTLY one from the provided list and indicate only ONE sentiment. The classification must EXACTLY MATCH one of the options listed above, without variations in capitalization, spacing, or wording. 
+Do not add or remove spaces, do not change uppercase or lowercase letters, and do not alter the names in any way.*
 
-Thus, the user's text is:
-text: *text user*
-sentiment:
+Now, analyze the following user text and classify the sentiment:
+User text: *user text*
+Response:
 ```
 ### Chain-of-Thought + Few-Shot (CoT_FS) Prompt
 ```
@@ -86,7 +91,9 @@ Consider the following classifications:
 * Negative: Refers to an unfavorable or pessimistic attitude (e.g., anger, frustration, sadness).
 * Neutral: Indicates that the text does not express a clear or strong sentiment (e.g., factual information).
 
-When the user provides a text, analyze and identify the most likely classification for the given text. Respond ONLY with a Python dictionary where the key is "sentiment" and the value is the appropriate sentiment from the list above. Do not add any text in your response, under any circumstances. **Make sure the suggested sentiment is STRICTLY one from the provided list and indicate only ONE sentiment. The classification must EXACTLY MATCH one of the options listed above, without variations in capitalization, spacing, or wording. Do not add or remove spaces, do not change uppercase or lowercase letters, and do not alter the names in any way.**
+When the user provides a text, analyze and identify the most likely classification for the given text. Respond ONLY with a Python dictionary where the key is "sentiment" and the value is the appropriate sentiment from the list above. 
+Do not add any text in your response, under any circumstances. *Make sure the suggested sentiment is STRICTLY one from the provided list and indicate only ONE sentiment. 
+The classification must EXACTLY MATCH one of the options listed above, without variations in capitalization, spacing, or wording. Do not add or remove spaces, do not change uppercase or lowercase letters, and do not alter the names in any way.*
 
 Here are some examples of user texts and responses:
 
@@ -102,13 +109,13 @@ User text: "O atendimento foi péssimo, fiquei esperando por horas e ninguém me
 Response: The text expresses a strong negative sentiment, showing frustration with the service.
 {"sentiment": "Negative"}
 
-User text: "O produto é bom, mas achei o preço um pouco alto para a qualidade."
-Response: The text conveys a neutral sentiment with a slight critique about the price, despite acknowledging the product's quality.
-{"sentiment": "Neutral"}
+User text: "Péssimo!"
+Response: In a single word, the user voices their dissatisfaction, indicating a clear negative sentiment towards the situation.
+{"sentiment": "Negative"}
 
-Thus, the user's text is:
-text: *text user*
-sentiment:
+Now, analyze the following user text and classify the sentiment:
+User text: *user text*
+Response:
 ```
 
 ## Generated Files
